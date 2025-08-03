@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import { fetchRandomMovie } from './api/movies';
+import type { Movie } from './types/movie';
+import type { AppProps } from './types/appprops';
 
-function App() {
-  const [count, setCount] = useState(0)
+
+function App({}: AppProps) {
+  const [movie, setMovie] = useState<Movie | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const handleSpin = async () => {
+    setIsLoading(true);
+    const randomMovie = await fetchRandomMovie();
+    setMovie(randomMovie);
+    setIsLoading(false);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app">
+      <h1>🎬 Movie Roulette</h1>
+      <button onClick={handleSpin} disabled={isLoading}>
+        {isLoading ? 'Buscando...' : '¡Girar la ruleta!'}
+      </button>
+
+      {movie && (
+        <div className="movie-card">
+          <h2>{movie.title}</h2>
+          <img 
+            src={movie.poster_path 
+              ? `https://image.tmdb.org/t/p/w300${movie.poster_path}` 
+              : 'https://via.placeholder.com/300x450?text=No+Poster'
+            } 
+            alt={movie.title} 
+          />
+          <p>{movie.overview || 'No hay descripción disponible.'}</p>
+        </div>
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;
