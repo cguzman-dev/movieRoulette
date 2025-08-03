@@ -27,3 +27,58 @@ button:disabled {
   width: 100%;
   border-radius: 5px;
 }
+
+.filters {
+  display: flex;
+  flex-wrap: wrap; /* Para dispositivos móviles */
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem auto;
+  max-width: 90%; /* Evita que toque los bordes en móviles */
+}
+
+select, input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+select {
+  min-width: 200px;
+}
+
+input {
+  width: 100px;
+}
+
+.error-messages {
+  margin-bottom: 2rem;
+}
+
+.error-bubble {
+  background-color: #ffeb3b;
+  color: #333;
+  padding: 0.3rem 0.6rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  display: inline-block;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Opcional: Ajustar inputs en móviles */
+@media (max-width: 600px) {
+  .filters {
+    flex-direction: column;
+    align-items: center;
+  }
+  select, input {
+    width: 100%;
+  }
+}

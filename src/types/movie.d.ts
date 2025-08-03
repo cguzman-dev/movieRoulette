@@ -8,3 +8,8 @@ export interface Movie {
     vote_average?: number;
     genre_ids?: number[];
 }
+
+export interface Genre {
+    id: number;
+    name: string;
+}
