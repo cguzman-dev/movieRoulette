@@ -19,11 +19,10 @@ export const fetchRandomMovie = async (genreId?: number, year?: string): Promise
       genreId ? `&with_genres=${genreId}` : ''
     }${year ? `&primary_release_year=${year}` : ''}`
   );
-  
+
   const movies = response.data.results;
   const movie = movies[Math.floor(Math.random() * movies.length)]
 
-console.log(movie);
 
   return movie;
 };
