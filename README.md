@@ -31,10 +31,9 @@ bash
 npm install
 Configura tu API key de TMDB:
 
-Crea un archivo .env en la raíz:
+## 🔐 Variables de Entorno
+- Copia `.env.example` a `.env` y añade tu API key de TMDB.
 
-env
-VITE_TMDB_KEY=tu_api_key
 Inicia la app:
 
 bash

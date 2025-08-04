@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import type { Movie, Genre } from '../types/movie';
 
-const API_KEY = '5667a1f398e86d554cc435eb50e989b1';
+const API_KEY = import.meta.env.VITE_TMDB_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 
