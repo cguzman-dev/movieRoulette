@@ -26,3 +26,13 @@ export const fetchRandomMovie = async (genreId?: number, year?: string): Promise
 
   return movie;
 };
+
+export const fetchMovieTrailer = async (movieId: number): Promise<string | null> => {
+  const response = await axios.get(
+    `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=es`
+  );
+  const trailer = response.data.results.find(
+    (video: any) => video.type === "Trailer" && video.site === "YouTube"
+  );
+  return trailer?.key || null;
+};

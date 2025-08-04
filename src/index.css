@@ -1,3 +1,16 @@
+:root {
+  --bg-color: #fff;
+  --text-color: #333;
+}
+.dark-theme {
+  --bg-color: #121212;
+  --text-color: #f0f0f0;
+}
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
 .app {
   text-align: center;
   padding: 2rem;
@@ -113,6 +126,70 @@ input {
   color: #1976d2;
 }
 
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--bg-color);
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 80%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.favorite-card {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.favorite-card img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.remove-button {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+
+.remove-button:hover {
+  background: #ff5252;
+}
+
+/* Para modo oscuro */
+.dark-theme .remove-button {
+  background: #d32f2f;
+}
+
+.favorites-button{
+  margin-left: 1rem;
+}
+
 /* Botón-Ruleta */
 .ruleta-button {
   width: 120px;
@@ -170,6 +247,12 @@ input {
 /* Animación de frenado */
 .ruleta-button.stopping {
   animation: stopSpin 1.5s ease-out forwards;
+}
+
+.trailer-container {
+  margin: 1rem 0;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 @keyframes spin {
