@@ -1,69 +1,65 @@
-# React + TypeScript + Vite
+# 🎬 Movie Roulette
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+¡Descubre películas al azar con filtros personalizados y guarda tus favoritos! Una app interactiva construida con React, TypeScript y la API de TMDB.
 
-Currently, two official plugins are available:
+*(Ejemplo: Interfaz con filtros y película aleatoria)*
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Características
 
-## Expanding the ESLint configuration
+- **Ruleta interactiva**: Animación realista al buscar películas.
+- **Filtros inteligentes**: Por género, año y rating.
+- **Trailers integrados**: Reproduce tráilers de YouTube.
+- **Favoritos**: Guarda películas en localStorage.
+- **Modo oscuro/claro**: Diseño adaptable a preferencias.
+- **Responsive**: Funciona en móvil y desktop.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🔧 Tecnologías
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- ![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white)
+- ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white)
+- ![Vite](https://img.shields.io/badge/-Vite-646CFF?logo=vite&logoColor=white)
+- ![TMDB API](https://img.shields.io/badge/-TMDB_API-01D277?logo=themoviedatabase&logoColor=white)
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 📦 Instalación
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/tu-usuario/movie-roulette.git
+Instala dependencias:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+bash
+npm install
+Configura tu API key de TMDB:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Crea un archivo .env en la raíz:
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+env
+VITE_TMDB_KEY=tu_api_key
+Inicia la app:
+
+bash
+npm run dev
+🌍 Demo en vivo
+¡Prueba la app directamente!
+🔗 https://cguzman-dev.github.io/movie-roulette/
+
+🎨 Estructura del proyecto
+text
+movie-roulette/
+├── src/
+│   ├── api/           # Lógica de conexión a TMDB
+│   ├── components/    # Componentes reutilizables
+│   ├── context/       # Theme context
+│   ├── hooks/         # Custom hooks (useFavorites)
+│   ├── types/         # Interfaces TypeScript
+│   └── App.tsx        # Componente principal
+├── index.html
+├── vite.config.ts     # Configuración de Vite
+└── package.json
+
+
+## 📄 Licencia
+[![CC BY-NC-ND 4.0](https://licensebuttons.net/l/by-nc-nd/4.0/80x15.png)](https://creativecommons.org/licenses/by-nc-nd/4.0/)  
+Este trabajo está bajo una licencia [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+
+Hecho con ❤️ y Vite
