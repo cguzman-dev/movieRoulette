@@ -28,4 +28,5 @@ dist-ssr
 
 #Secrets
 gh-pages-key*
+deploy_key*
 known_hosts
