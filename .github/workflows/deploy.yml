@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ "master" ]  # Se ejecuta al hacer push a master
+    branches: [ "master" ]
 
 jobs:
   deploy:
@@ -22,17 +22,24 @@ jobs:
       - name: Build project
         run: npm run build
         env:
-          VITE_TMDB_KEY: ${{ secrets.TMDB_API_KEY }}  # 🔐 Inyecta el secreto
-          
+          VITE_TMDB_KEY: ${{ secrets.TMDB_API_KEY }}
+
+      # Configuración SSH mejorada
+      - name: Add GitHub to known hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          name: github
-          known_hosts: ${{ secrets.KNOWN_HOSTS }}
-          
+          name: github  # Nombre del archivo de clave (~/.ssh/github)
+          known_hosts: unnecessary  # Opcional: ignora si ya se generó en el paso anterior
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           ssh_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: ./dist
+          keep_files: false  # Opcional: limpia el branch gh-pages antes de desplegar
