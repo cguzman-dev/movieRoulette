@@ -28,3 +28,4 @@ dist-ssr
 
 #Secrets
 gh-pages-key*
+known_hosts
